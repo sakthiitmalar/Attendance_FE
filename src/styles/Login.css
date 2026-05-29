@@ -1,0 +1,188 @@
+/* FULL BACKGROUND */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(-45deg, #0f172a, #1e293b, #2563eb, #0ea5e9);
+  background-size: 400% 400%;
+  animation: bgMove 12s ease infinite;
+
+  padding: 15px;
+}
+
+/* BACKGROUND ANIMATION */
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* LOGIN CARD */
+.login-card {
+  width: 100%;
+  max-width: 380px;
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+
+  padding: 35px;
+  text-align: center;
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+  animation: fadeUp 0.8s ease;
+}
+
+/* CARD ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TITLE */
+.login-card h2 {
+  color: #fff;
+  margin-bottom: 25px;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+/* INPUTS */
+.input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+
+  border: none;
+  outline: none;
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+
+  font-size: 14px;
+
+  transition: 0.3s ease;
+}
+
+/* PLACEHOLDER */
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* FOCUS EFFECT */
+.input:focus {
+  transform: scale(1.03);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px rgba(14, 165, 233, 0.6);
+}
+
+/* BUTTON */
+.btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #06b6d4, #2563eb);
+  color: white;
+
+  font-size: 16px;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* BUTTON HOVER */
+.btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* BUTTON ACTIVE */
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 25px;
+    border-radius: 14px;
+  }
+
+  .login-card h2 {
+    font-size: 22px;
+  }
+
+  .input {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+
+  background: transparent;
+  border: 2px solid #667eea;
+  color: #667eea;
+
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* hover effect */
+.btn-secondary:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* click animation */
+.btn-secondary:active {
+  transform: scale(0.96);
+}
+
+/* glow animation line */
+.btn-secondary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  transition: 0.5s;
+}
+
+.btn-secondary:hover::after {
+  left: 100%;
+}

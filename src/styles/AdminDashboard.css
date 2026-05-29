@@ -1,0 +1,213 @@
+/* ==========================================================================
+   1. DASHBOARD VARIABLES & BASE STYLES
+   ========================================================================== */
+:root {
+  --sidebar-bg: #1e293b;       /* Dark Slate */
+  --sidebar-hover: #334155;
+  --sidebar-active: #4f46e5;      /* Primary Indigo */
+  --main-bg: #f8fafc;           /* Light gray-blue background */
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Master Grid Container */
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--main-bg);
+}
+
+/* ==========================================================================
+   2. SIDEBAR STYLES
+   ========================================================================== */
+.sidebar {
+  width: 260px;
+  background-color: var(--sidebar-bg);
+  color: var(--white);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex-shrink: 0; /* Prevents sidebar from shrinking */
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-left: 4px solid var(--sidebar-active);
+}
+
+/* Sidebar Buttons */
+.sidebar button {
+  width: 100%;
+  padding: 14px 16px;
+  background: transparent;
+  color: #cbd5e1; /* Soft text color */
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar button:hover {
+  background-color: var(--sidebar-hover);
+  color: var(--white);
+}
+
+/* Tip: React-la 'active' class add panna intha style trigger aagum */
+.sidebar button.active, 
+.sidebar button:focus { 
+  background-color: var(--sidebar-active);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+/* ==========================================================================
+   3. MAIN CONTENT AREA
+   ========================================================================== */
+.main {
+  flex-grow: 1;
+  padding: 40px;
+  overflow-x: auto; /* Handles massive tables on smaller views */
+}
+
+.main h2 {
+  color: var(--text-dark);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* ==========================================================================
+   4. MODERN TABLE DESIGN (Replaces inline borders)
+   ========================================================================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--white);
+  border-radius: 12px;
+  overflow: hidden; /* Cleans table corner radius */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  margin-bottom: 20px;
+}
+
+/* Resetting old HTML border styles from React component */
+table[border="1"] {
+  border: none !important;
+}
+
+th, td {
+  padding: 16px 20px;
+  text-align: left;
+}
+
+thead {
+  background-color: #f1f5f9;
+}
+
+th {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.15s ease;
+}
+
+/* Zebra Striping */
+tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+td {
+  color: var(--text-dark);
+  font-size: 0.95rem;
+}
+
+/* Status badge decoration for Attendance */
+td:nth-child(3) {
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   5. MEDIA QUERIES (RESPONSIVENESS)
+   ========================================================================== */
+
+/* Tablet & Mobile Screens (768px and below) */
+@media (max-width: 768px) {
+  .admin-container {
+    flex-direction: column; /* Stack sidebar on top of main content */
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .sidebar h2 {
+    font-size: 1.3rem;
+  }
+
+  /* Make buttons display side-by-side on mobile header */
+  .sidebar flex, 
+  .sidebar {
+    flex-direction: column;
+  }
+  
+  /* Quick wrapper style fix if you choose to make nav row-based later */
+  .sidebar button {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .main {
+    padding: 24px 16px;
+  }
+
+  .main h2 {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+
+  th, td {
+    padding: 12px 14px; /* Slightly tighter tables on smaller layouts */
+    font-size: 0.88rem;
+  }
+}
+
+/* Extra Small Phones (480px and below) */
+@media (max-width: 480px) {
+  /* Enables responsive scrolling inside the main wrapper for super small viewports */
+  .main {
+    overflow-x: scroll;
+  }
+}

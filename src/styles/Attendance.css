@@ -1,0 +1,155 @@
+/* ==========================================================================
+   1. VARIABLES & BASE LAYOUT
+   ========================================================================== */
+:root {
+  --primary-color: #10b981;       /* Vibrant Emerald Green */
+  --primary-hover: #059669;
+  --disabled-color: #9ca3af;
+  --bg-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); /* Deep Blue Tech theme */
+  --card-bg: rgba(255, 255, 255, 0.98);
+  --text-main: #1f2937;
+  --text-msg: #4b5563;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Flex layout to center the attendance module */
+.att-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg-gradient);
+  padding: 20px;
+}
+
+/* ==========================================================================
+   2. ATTENDANCE CARD STYLING
+   ========================================================================== */
+.att-card {
+  background: var(--card-bg);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  border-top: 6px solid var(--primary-color); /* Top highlighting strip */
+  transition: transform 0.3s ease;
+}
+
+.att-card:hover {
+  transform: translateY(-4px);
+}
+
+.att-card h2 {
+  color: var(--text-main);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   3. ATTENDANCE BUTTON (WITH ANIMATION)
+   ========================================================================== */
+.att-btn {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  transition: all 0.2s ease-in-out;
+}
+
+.att-btn:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.4);
+}
+
+.att-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Loading or Disabled State style */
+.att-btn:disabled {
+  background-color: var(--disabled-color);
+  box-shadow: none;
+  cursor: not-allowed;
+  animation: pulse 1.5s infinite ease-in-out; /* Continuous smooth pulsing while fetching GPS */
+}
+
+/* ==========================================================================
+   4. DYNAMIC FEEDBACK MESSAGE BOX
+   ========================================================================== */
+.msg {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  color: var(--text-msg);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-left: 4px solid var(--disabled-color);
+  word-wrap: break-word;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ==========================================================================
+   5. KEYFRAMES FOR SMOOTH USER EXPERIENCE
+   ========================================================================== */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   6. MEDIA QUERIES (MOBILE OPTIMIZATION)
+   ========================================================================== */
+
+/* Smart Phones (480px and below) */
+@media (max-width: 480px) {
+  .att-container {
+    padding: 16px;
+  }
+
+  .att-card {
+    padding: 30px 20px;
+    border-radius: 16px;
+  }
+
+  .att-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .att-btn {
+    padding: 14px;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+
+  .msg {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}

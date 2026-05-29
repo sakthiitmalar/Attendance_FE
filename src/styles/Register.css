@@ -1,0 +1,136 @@
+/* ==========================================================================
+   1. CORE THEME: MAXIMUM CONTRAST (BLACK & WHITE)
+   ========================================================================== */
+:root {
+  --primary-color: #000000;       /* Pure Black */
+  --primary-hover: #333333;       /* Dark Grey */
+  --bg-color: #ffffff;           /* Pure White */
+  --card-bg: #f5f5f5;           /* Very Light Grey (Card background) */
+  --text-main: #000000;         /* High Contrast Black */
+  --input-border: #888888;       /* Visible Grey Border */
+  --input-focus: #000000;       /* High Contrast Focus */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif; /* Modern, clear font */
+}
+
+/* Master Container */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg-color); /* Bright White Background */
+  padding: 24px;
+}
+
+/* ==========================================================================
+   2. REFINED CARD STYLE (SOLID, NOT GLASS)
+   ========================================================================= */
+.register-card {
+  background: var(--card-bg); /* Use solid light grey for contrast */
+  padding: 60px; /* More breathable space */
+  border-radius: 12px; /* Subtle radius */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+  width: 100%;
+  max-width: 500px; /* Comfortable desktop width */
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle frame */
+}
+
+.register-card h2 {
+  color: var(--text-main);
+  font-size: 2.5rem; /* Larger, clearer text */
+  font-weight: 800;
+  margin-bottom: 40px;
+  letter-spacing: -1px;
+}
+
+/* ==========================================================================
+   3. HIGH CONTRAST INPUTS
+   ========================================================================== */
+.input {
+  width: 100%;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  border: 2px solid var(--input-border); /* Explicit, visible border */
+  border-radius: 6px;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  background-color: #ffffff; /* Explicit white background for readability */
+  outline: none;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input:focus {
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1); /* Visible focus ring */
+}
+
+.input::placeholder {
+  color: #555555; /* Solid grey - definitely readable */
+  opacity: 1; /* Firefox browser layum theriya mathidalam */
+}
+
+/* ==========================================================================
+   4. IMPACTFUL BUTTON
+   ========================================================================== */
+.btn {
+  width: 100%;
+  padding: 18px; /* Prominent size */
+  background-color: var(--primary-color);
+  color: #ffffff; /* High contrast white text on black */
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================================
+   5. MEDIA QUERIES (MOBILE RESPONSIVENESS)
+   ========================================================================== */
+
+/* Mobile Phones (480px and below) */
+@media (max-width: 480px) {
+  .register-container {
+    padding: 16px;
+  }
+
+  .register-card {
+    padding: 30px 15px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03); /* Lighter shadow on mobile */
+  }
+
+  .register-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .input {
+    padding: 12px 14px;
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+
+  .btn {
+    padding: 14px;
+    font-size: 1rem;
+  }
+}
